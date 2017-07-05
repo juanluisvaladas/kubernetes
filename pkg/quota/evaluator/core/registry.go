@@ -34,15 +34,17 @@ func NewRegistry(kubeClient clientset.Interface, f informers.SharedInformerFacto
 	secret := NewSecretEvaluator(kubeClient)
 	configMap := NewConfigMapEvaluator(kubeClient)
 	persistentVolumeClaim := NewPersistentVolumeClaimEvaluator(kubeClient, f)
+	horizontalPodAutoscaler := NewHorizontalPodAutoscalerEvaluator(kubeClient)
 	return &generic.GenericRegistry{
 		InternalEvaluators: map[schema.GroupKind]quota.Evaluator{
-			pod.GroupKind():                   pod,
-			service.GroupKind():               service,
-			replicationController.GroupKind(): replicationController,
-			secret.GroupKind():                secret,
-			configMap.GroupKind():             configMap,
-			resourceQuota.GroupKind():         resourceQuota,
-			persistentVolumeClaim.GroupKind(): persistentVolumeClaim,
+			pod.GroupKind():                     pod,
+			service.GroupKind():                 service,
+			replicationController.GroupKind():   replicationController,
+			secret.GroupKind():                  secret,
+			configMap.GroupKind():               configMap,
+			resourceQuota.GroupKind():           resourceQuota,
+			persistentVolumeClaim.GroupKind():   persistentVolumeClaim,
+			horizontalPodAutoscaler.GroupKind(): horizontalPodAutoscaler,
 		},
 	}
 }

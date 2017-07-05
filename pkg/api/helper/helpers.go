@@ -156,6 +156,7 @@ var standardQuotaResources = sets.NewString(
 	string(api.ResourceConfigMaps),
 	string(api.ResourceServicesNodePorts),
 	string(api.ResourceServicesLoadBalancers),
+	string(api.ResourceHorizontalPodAutoscaler),
 )
 
 // IsStandardQuotaResourceName returns true if the resource is known to
@@ -180,6 +181,7 @@ var standardResources = sets.NewString(
 	string(api.ResourcePersistentVolumeClaims),
 	string(api.ResourceStorage),
 	string(api.ResourceRequestsStorage),
+	string(api.ResourceHorizontalPodAutoscaler),
 )
 
 // IsStandardResourceName returns true if the resource is known to the system
@@ -197,6 +199,7 @@ var integerResources = sets.NewString(
 	string(api.ResourcePersistentVolumeClaims),
 	string(api.ResourceServicesNodePorts),
 	string(api.ResourceServicesLoadBalancers),
+	string(api.ResourceHorizontalPodAutoscaler),
 )
 
 // IsIntegerResourceName returns true if the resource is measured in integer values
