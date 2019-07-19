@@ -80,6 +80,7 @@ type KernelCompatTester interface {
 }
 
 // CanUseIPTablesProxier returns true if we should use the iptables Proxier
+// instead of the "classic" userspace Proxier.
 func CanUseIPTablesProxier(kcompat KernelCompatTester) (bool, error) {
 	if err := kcompat.IsCompatible(); err != nil {
 		return false, err
